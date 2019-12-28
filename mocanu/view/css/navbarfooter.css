@@ -8,7 +8,7 @@ ul.ul-navbar {
   margin: 0;
   padding: 0;
   overflow: auto;
-  background-color: #232F3F;
+  background-color: #00796B;
 }
 
 ul.ul-navbar li {
@@ -50,7 +50,7 @@ ul.ul-navbar li a {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #232F3F;
+  background-color: #00796B;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	width: 100%;
@@ -63,6 +63,7 @@ ul.ul-navbar li a {
 	color:  #8f9296;
 	font-size: 14px;
 	margin: 0;
+  text-align: center;
 }
 
 .footer p.footer-links{

@@ -33,7 +33,7 @@ jQuery(document).ready(function(){
     jQuery(nodea).html('&nbsp;Game');
     nodep.appendChild(nodea);
     nodep = document.createElement('p');
-    jQuery(nodep).html('TWebShop &copy; 2018');
+    jQuery(nodep).html('NerdShop &copy; 2020');
     nodediv.appendChild(nodep);
     /*} else {
       jQuery('div').removeClass('footer');
