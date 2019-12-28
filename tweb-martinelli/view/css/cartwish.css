@@ -1,0 +1,130 @@
+/*
+  Stefano Martinelli - 812155
+  CSS per le pagine cart.php e wish.php
+*/
+
+.wish {
+  margin: auto;
+  width: 50%;
+}
+
+.wish_container {
+  display: flex;
+  margin-top: 30px;
+  margin-left: 100px;
+}
+
+.cart {
+  margin: auto;
+  width: 50%;
+  min-width: 50%;
+}
+
+.cart_container {
+  display: flex;
+  margin-top: 30px;
+  margin-left: 100px;
+}
+
+.wish_img, .cart_img {
+  width: 200px;
+}
+
+.wish_info, .cart_info {
+  min-width: 200px;
+  width: 250px;
+}
+
+.hrwish, .hrcart {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.numwish, .numcart {
+  margin-bottom: 25px;
+}
+
+.wishnameprod, .cartnameprod {
+  font-size: 14pt;
+}
+
+.wish_subinfo, .cart_subinfo {
+  font-size: 10pt;
+}
+
+#addtocartfromwish, .removeprodwish, #addtowishfromcart, .removeprodcart {
+  margin-bottom: 25px;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.removeprodcart {
+  margin-left: 20px;
+}
+
+.buy {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  padding: 8px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.buy span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.buy span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.buy:hover span {
+  padding-right: 25px;
+}
+
+.buy:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.resultorder {
+  margin: auto;
+  width: 50%;
+}
+
+.norder {
+  text-align: center;
+  font-size: 20pt;
+}
+
+.redorder {
+  text-align: center;
+}
+
+.redorder a {
+  text-decoration: none;
+}
+
+#submitproductwish {
+  margin-top: 8px;
+  padding-left: 20px;
+  border: none;
+  background: none;
+}

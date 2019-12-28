@@ -1,0 +1,117 @@
+/*
+  Stefano Martinelli - 812155
+  CSS per la pagina game.php
+*/
+
+#game, #alreadygame {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#gamearea {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+#gamearea > div {
+  width: 90px;
+  height: 90px;
+  font-size: 40pt;
+  display: inline-block;
+  position: absolute;
+  line-height: 90px;
+  text-align: center;
+  border: 5px solid black;
+  background-image: url("../../img/question-mark.png");
+  background-repeat: no-repeat;
+}
+
+#controls {
+  margin-bottom: 55px;
+}
+
+#startbutton {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #232F3F;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  padding: 8px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#startbutton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#startbutton span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#startbutton:hover span {
+  padding-right: 25px;
+}
+
+#startbutton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#solutions > button {
+  width: 180px;
+  display: none;
+  outline: 0;
+  background: #f2f2f2;
+  border: 0;
+  margin: 5px 0;
+  padding: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  font-size: 14px;
+  border-color: #3F51B5;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+#solutions > button:hover {
+  background-color: #3F51B5;
+  color: white;
+}
+
+.gameres {
+  display: none;
+}
+
+#timer_div {
+  margin-bottom: 10px;
+}
+
+.gameresult {
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.alreadyplayed {
+  font-size: 15pt;
+}

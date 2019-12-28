@@ -1,0 +1,109 @@
+/*
+  Stefano Martinelli - 812155
+  CSS per la pagina orders.php 
+*/
+#order {
+  text-align: center;
+}
+
+.listorder {
+  text-align: center
+}
+
+.review {
+  width: 350px;
+  margin: auto;
+}
+
+.listorder > .order_info2 {
+  margin-bottom: 40px;
+}
+
+.trone > th:first-child {
+  padding-left: 20px;
+}
+
+.trone > th:nth-child(2) {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.trtwo > td:first-child {
+  padding-left: 20px;
+}
+
+.trtwo > td:nth-child(2) {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.trtwo > td:nth-child(3) {
+  width: 150px;
+}
+
+#bodyreview {
+  height: 4em;
+  width: 20em;
+}
+
+.hrorder {
+  border: 0;
+  height: 1px;
+  width: 250px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+#sendreview {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #232F3F;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  padding: 8px;
+  width: 120px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#sendreview span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#sendreview span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#sendreview:hover span {
+  padding-right: 25px;
+}
+
+#sendreview:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#titlereview {
+  width: 200px;
+  margin-bottom: 5px;
+}
+
+.click {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.review {
+  display: none;
+}

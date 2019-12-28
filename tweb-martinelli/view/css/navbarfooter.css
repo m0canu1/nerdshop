@@ -1,0 +1,171 @@
+/*
+  Stefano Martinelli - 812155
+  CSS per la navigation bar, per il footer e per i form login/register
+*/
+
+ul.ul-navbar {
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  background-color: #232F3F;
+}
+
+ul.ul-navbar li {
+  float: left;
+}
+
+ul.ul-navbar li:nth-child(2) {
+  float: left;
+  margin-top: 3px;
+}
+
+ul.ul-navbar li:last-child {
+  float: right;
+}
+
+ul.ul-navbar li:nth-last-child(2) {
+  float: right;
+}
+
+ul.ul-navbar li:nth-last-child(3) {
+  float: right;
+}
+
+ul.ul-navbar li:nth-last-child(4) {
+  float: right;
+}
+
+ul.ul-navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 4px 5px;
+  text-decoration: none;
+}
+
+/* bottom */
+.footer{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #232F3F;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	padding: 30px;
+  margin-bottom: -8px;
+}
+
+.footer .footer-left p{
+	color:  #8f9296;
+	font-size: 14px;
+	margin: 0;
+}
+
+.footer p.footer-links{
+	font-size: 18px;
+	font-weight: bold;
+	color: #ffffff;
+	margin: 0 0 10px;
+	padding: 0;
+}
+
+.footer p.footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color: inherit;
+}
+
+/* logout */
+
+#logoutlogo {
+  display: none;
+}
+
+/* login */
+.login-page {
+  width: 360px;
+  padding: 3% 0 0;
+  margin: auto;
+}
+
+#registerform {
+  display: none;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  margin: 0 auto 100px;
+  padding: 45px;
+  padding-left: 10px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+#submitlogin, #submitreg {
+  text-transform: uppercase;
+  outline: 0;
+  background: #3F51B5;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+
+.form .messagelogin, .messageregister {
+  padding-left: 25pt;
+  text-align: center;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+
+.form .registerform {
+  display: none;
+}
+
+#loginform h2 {
+  font-size: 20pt;
+  padding-left: 24pt;
+}
+
+#registerform h2 {
+  font-size: 20pt;
+  padding-left: 28pt;
+}
+
+.messagelogin > a {
+  font-weight: bold;
+  color: #1A237E;
+  text-decoration: none;
+}
+
+.messageregister > a {
+  font-weight: bold;
+  color: #1A237E;
+  text-decoration: none;
+}

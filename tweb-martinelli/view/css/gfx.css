@@ -1,0 +1,27 @@
+/*
+  Stefano Martinelli - 812155
+  CSS generale
+*/
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  font-family: Lato, Verdana, Tahoma, 'Trebuchet MS', 'DejuVu Sans', sans-serif;
+}
+
+body {
+  margin: auto;
+  min-width: 500px;
+  position: relative;
+  padding-bottom: 6rem;
+  min-height: 89%;
+}
+
+#flash {
+  font-size: 16pt;
+  text-align: center;
+  margin-top: 40px;
+}
