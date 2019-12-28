@@ -17,7 +17,7 @@ jQuery(document).ready(function(){
   jQuery('#submitreg').click(function(){
     jQuery.ajax({
       type: 'POST',
-      url: '../progetto/model/users/registeruser.php',
+      url: 'model/users/registeruser.php',
       data: jQuery('#registerform').serializeArray(),
       dataType: 'text',
       success: function(result) {
@@ -32,7 +32,7 @@ jQuery(document).ready(function(){
   jQuery('#submitlogin').click(function(){
     jQuery.ajax({
       type: 'POST',
-      url: '../progetto/model/users/loginuser.php',
+      url: 'model/users/loginuser.php',
       data: jQuery('#loginform').serializeArray(),
       dataType: 'text',
       success: function(result) {

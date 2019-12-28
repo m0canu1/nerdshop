@@ -11,7 +11,7 @@ jQuery(document).ready(function(){
   jQuery('#logoutlogo').click(function(){
     jQuery.ajax({
       type: 'GET',
-      url: '../../progetto/model/users/logoutuser.php',
+      url: '../../model/users/logoutuser.php',
       success: function(result) {
         var obj = JSON.parse(result);
         window.location.href = obj.url;
