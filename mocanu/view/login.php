@@ -1,15 +1,15 @@
-<div class="login-page" id="login">
+<div class="login-page">
     <div class="form">
-<!--        <form id="loginform" method="POST">-->
-<!--            <h2>Login</h2>-->
-<!--            <dl>-->
-<!--                <dt></dt>-->
-<!--                <dd><input type="text" name="username" placeholder="Username" required></dd>-->
-<!--                <dd><input type="password" name="password" placeholder="Password" required></dd>-->
-<!--                <dd><input type="button" id="submitlogin" value="Accedi"></dd>-->
-<!--            </dl>-->
-<!--            <p class="messagelogin">Sei nuovo su TWebShop? <a href="#">Crea un account!</a></p>-->
-<!--        </form>-->
+        <form id="loginform" method="POST">
+            <h2>Login</h2>
+            <dl>
+                <dt></dt>
+                <dd><input type="text" name="username" placeholder="Username" required></dd>
+                <dd><input type="password" name="password" placeholder="Password" required></dd>
+                <dd><input type="button" id="submitlogin" value="Accedi"></dd>
+            </dl>
+            <p class="messagelogin">Sei nuovo su TWebShop? <a href="#">Crea un account!</a></p>
+        </form>
         <form id="registerform" method="POST">
             <h2>Registrazione</h2>
             <dl>

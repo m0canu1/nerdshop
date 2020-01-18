@@ -15,8 +15,8 @@ require '../dbconnection.php';
 
 if (!$_POST['username'] || !$_POST['password'] || !$_POST['email'] || !$_POST['firstname'] || !$_POST['lastname']) {
 //    setFlashMsg('Registrazione non avvenuta con successo, compilare tutti i campi.');
-    //TODO a che serve?
-//    echo json_encode(array('msg' => 'Registrazione non avvenuta con successo, compilare tutti i campi.'));
+    //TODO al posto del messaggio, controllare a livello di jquery la compilazione dei campi
+    echo json_encode(array('msg' => 'Registrazione non avvenuta con successo, compilare tutti i campi.'));
 } else if (isset($_POST['username']) && isset($_POST['password'])) {
     $user = $_POST['username'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -33,16 +33,10 @@ if (!$_POST['username'] || !$_POST['password'] || !$_POST['email'] || !$_POST['f
         try {
             $stmt = $db->prepare('INSERT INTO user (username, password, firstname, lastname, email)  VALUES (?,?,?,?,?)');
             $stmt->execute(array($user, $password, $fname, $lname, $email));
-//            setFlashMsg('Registrazione avvenuta con success. Effettuare l\'accesso.');
-//          TODO a che serve
-            echo json_encode(array('msg'=>'Registrazione avvenuta con successo. Effettuare l\'accesso.'));
+            echo json_encode(array('msg'=>'Registrazione avvenuta con successo. Effettuare l\'accesso.', 'status'=>true));
         } catch (PDOException $exception) {
-//            setFlashMsg('ops.');
-//            echo json_encode(array('msg' => $exception));
             if ($exception->errorInfo[1] === 1062) {
-//                setFlashMsg('Registrazione non avvenuta, nome utente già presente.');
-                //TODO a che serve?
-                echo json_encode(array('msg'=>'Registrazione non avvenuta, nome utente già presente.'));
+                echo json_encode(array('msg'=>'Registrazione non avvenuta, nome utente già presente.', 'status'=>false));
             }
         }
 
