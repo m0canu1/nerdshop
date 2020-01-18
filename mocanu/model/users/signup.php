@@ -14,7 +14,6 @@ require '../dbconnection.php';
  */
 
 if (!$_POST['username'] || !$_POST['password'] || !$_POST['email'] || !$_POST['firstname'] || !$_POST['lastname']) {
-//    setFlashMsg('Registrazione non avvenuta con successo, compilare tutti i campi.');
     //TODO al posto del messaggio, controllare a livello di jquery la compilazione dei campi
     echo json_encode(array('msg' => 'Registrazione non avvenuta con successo, compilare tutti i campi.'));
 } else if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -41,7 +40,6 @@ if (!$_POST['username'] || !$_POST['password'] || !$_POST['email'] || !$_POST['f
         }
 
     } else {
-//        setFlashMsg('L\'mail inserita non è valida, controllare.');
         //TODO a che serve?
         echo json_encode(array("msg"=>"L'mail inserita non è valida, controllare."));
     }
