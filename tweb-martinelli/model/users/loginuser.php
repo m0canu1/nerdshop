@@ -14,7 +14,7 @@
     echo json_encode(array("url"=>"index.php"));
   } else if(isset($_POST["username"]) && isset($_POST["password"])) {
     $username = $_POST["username"];
-    $password = md5($_POST["password"]);
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     $user = array($username, $password);
     if(checkPassword(json_encode($user))) {
       if(isset($_SESSION)) session_regenerate_id(TRUE);

@@ -1,5 +1,5 @@
 <?php
-include('top.html');
+include('top.php');
 include('../model/common.php');
 ?>
 
@@ -11,6 +11,7 @@ include('../model/common.php');
 <div id="containerhome">
     <form action="/view/product.php">
         <input id="searchbox" name="prod" size="40" type="text" placeholder="Cerca un prodotto.."/>
+<!--        todo provabilmente inutile-->
         <div id="searchboxlistarea"></div>
     </form>
 
@@ -55,5 +56,5 @@ include('../model/common.php');
 </div>
 
 <?php
-include('bottom.html');
+include('bottom.php');
 ?>

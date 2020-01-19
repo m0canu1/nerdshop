@@ -1,12 +1,16 @@
 <!DOCTYPE html>
+
+<?php
+    $root = $_SERVER['DOCUMENT_ROOT'];
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>NerdShop</title>
     <meta charset="utf-8" >
     <link href="img/icons/icon.png" type="image/png" rel="shortcut icon">
-    <link href="view/css/gfx.css" type="text/css" rel="stylesheet">
-    <link href="view/css/navbarfooter.css" type="text/css" rel="stylesheet">
+    <link href="css/gfx.css" type="text/css" rel="stylesheet">
+    <link href="css/navbarfooter.css" type="text/css" rel="stylesheet">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -16,9 +20,9 @@
     <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic"  rel="stylesheet" type="text/css">
 
 
-    <script src="controller/js/navbar.js"></script>
-    <script src="controller/js/footer.js"></script>
-    <script src="controller/js/users/loginsignup.js"></script>
+    <script src="../controller/js/navbar.js"></script>
+    <script src="../controller/js/footer.js"></script>
+    <script src="../controller/js/users/loginsignup.js"></script>
 <!--    <script src="controller/js/users/logout.js"></script>-->
 </head>
 <body>

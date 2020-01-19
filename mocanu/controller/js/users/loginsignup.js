@@ -46,13 +46,13 @@ jQuery(document).ready(function () {
             data: jQuery('#loginform').serializeArray(),
             dataType: 'json',
             success: function (result) {
-                //TODO a che serve?
-                // var object = JSON.parse(result);
-                console.log(result);
+                // console.log(result);
+                //TODO problema qui per i file non trovate da top.php
+                window.location.href = '/view/home.php';
                 window.location.href = result.url;
             },
             error: function (error) {
-                console.log(error);
+                // console.log(error);
                 console.log('Errore: impossibile effettuare il login.')
             }
         });

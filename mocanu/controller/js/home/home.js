@@ -15,13 +15,14 @@ jQuery(document).ready(function () {
      */
     jQuery.ajax({
         type: 'GET',
-        url: '../model/getuser.php',
+        url: '../model/users/getuser.php',
         data: '',
         dataType: 'json',
         success: function (result) {
-            user = result.user;
+            user = result;
         },
-        error: function () {
+        error: function (error) {
+            console.log(error);
             console.log("Errore: impossibile ottenere le informazioni dell'utente.");
         }
     });
@@ -61,12 +62,13 @@ jQuery(document).ready(function () {
             //TODO gestire meglio i json?
             var productList = JSON.parse(JSON.stringify(result));
             //todo da capire
-            new Autocompleter.Local(
-                'searchbox',
-                'searchboxlistarea',
-                productList,
-                {}
-            );
+            jQuery('#searchbox').autocomplete({
+                source: result
+            });
+            //todo probabilmente inutile
+            jQuery('#searchboxlistarea').autocomplete({
+                source: productList
+            });
         },
         error: function (error) {
             console.log('Errore recupero prodotti');
@@ -148,14 +150,24 @@ jQuery(document).ready(function () {
     // var button = document.getElementById('myBtn');
     var span = document.getElementsByClassName('close')[0];
 
+    /**
+     * apertura della finestra
+     */
     function modf() {
         modal.style.display = 'block';
     }
 
+    /**
+     * chiusura della finestra cliccando su X
+     */
     span.onclick = function () {
         modal.style.display = 'none';
     };
 
+    /**
+     * Chiusura della finestra cliccando fuori
+     * @param event
+     */
     window.onclick = function (event) {
         if (event.target === modal) {
             modal.style.display = 'none';
@@ -165,7 +177,7 @@ jQuery(document).ready(function () {
     function setModal() {
         var nodediv = document.createElement('div');
         nodediv.className = 'modal-content';
-        document.getElementById('MyModal').appendChild(nodediv);
+        document.getElementById('myModal').appendChild(nodediv);
 
         var node = document.createElement('div');
         node.className = 'modal-header';

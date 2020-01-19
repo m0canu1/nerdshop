@@ -16,6 +16,7 @@ jQuery(document).ready(function (){
       user = result.user;
     },
     error: function(error) {
+      console.log(error);
       console.log("Errore: impossibile ottenere informazioni dell'utente.");
     }
   });

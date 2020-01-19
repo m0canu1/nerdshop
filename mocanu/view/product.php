@@ -1,5 +1,5 @@
 <?php
-include('top.html');
+include('top.php');
 include('../model/common.php');
 $_SESSION['product'] = filter_input(INPUT_GET, "prod");
 ?>
@@ -21,5 +21,5 @@ $_SESSION['product'] = filter_input(INPUT_GET, "prod");
 </div>
 
 <?php
-include('bottom.html');
+include('bottom.php');
 ?>
