@@ -3,7 +3,7 @@ L'utente, per poter usufruire dei vari servizi del sito, ha bisogno di accedere 
 <!--registrazione.
 -->
 <?php
-include('top.php');
+include('view/top.html');
 if (!isset($_SESSION)) session_start();
 if (isset($_SESSION['flash'])) {
     ?>
@@ -11,6 +11,6 @@ if (isset($_SESSION['flash'])) {
     <?php
     unset($_SESSION['flash']);
 }
-include('./view/login.php');
-include('bottom.php');
+include('view/login.php');
+include('view/bottom.html');
 ?>

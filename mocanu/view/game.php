@@ -4,7 +4,7 @@
  * data dell'acquisto ecc.). Tramite questa pagina è possibile rilasciare le recensioni dei prodotti
  * acquistati.
  */
-include 'top.php';
+include 'top.html';
 include '../model/common.php';
 ?>
 
@@ -21,6 +21,6 @@ include '../model/common.php';
 
 
 <?php
-include('bottom.php');
+include('bottom.html');
 ?>
 

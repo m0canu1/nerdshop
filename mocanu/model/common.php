@@ -1,5 +1,7 @@
 <?php
 
+$root = $_SERVER["DOCUMENT_ROOT"];
+
 //TODO forse superfluo
 if (!isset($_SESSION)) {
     session_start();

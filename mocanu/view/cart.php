@@ -3,7 +3,7 @@
  * In questa pagina sono presenti i vari smartphone aggiunti dall'utente.
  * Da qui è possibile completare un acquisto o trasferire un prodotto nella Wishlist.
  */
-include 'top.php';
+include 'top.html';
 include '../model/common.php';
 ?>
 
@@ -23,5 +23,5 @@ include '../model/common.php';
 </div>
 
 <?php
-include('bottom.php');
+include('bottom.html');
 ?>

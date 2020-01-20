@@ -1,0 +1,11 @@
+#RewriteEngine On
+#
+## add /foo/ if not there
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule !^view/ view%{REQUEST_URI} [L,NC]
+#
+## add .php
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME}.php -f
+#RewriteRule ^(.+?)/?$ $1.php [L]

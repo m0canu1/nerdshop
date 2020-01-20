@@ -47,8 +47,8 @@ jQuery(document).ready(function () {
             dataType: 'json',
             success: function (result) {
                 // console.log(result);
-                //TODO problema qui per i file non trovate da top.php
-                window.location.href = '/view/home.php';
+                //TODO problema qui per i file non trovate da top.html
+                // window.location.href = '/view/home.php';
                 window.location.href = result.url;
             },
             error: function (error) {

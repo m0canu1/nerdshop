@@ -1,5 +1,5 @@
 <?php
-include('top.php');
+include('top.html');
 include('../model/common.php');
 ?>
 
@@ -56,5 +56,5 @@ include('../model/common.php');
 </div>
 
 <?php
-include('bottom.php');
+include('bottom.html');
 ?>
