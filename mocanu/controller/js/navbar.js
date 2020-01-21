@@ -13,7 +13,7 @@ jQuery(document).ready(function() {
 
     // Creazione dell'icona relativa all'Homepage
     var a = document.createElement('a');
-    a.setAttribute('href', './view/home.php');
+    a.setAttribute('href', 'home.php');
     nodeli.appendChild(a);
     var img = document.createElement('img');
     img.setAttribute('src', '/img/LogoWhite115x40.png');
@@ -36,7 +36,7 @@ jQuery(document).ready(function() {
     // Creazione dell'icona relativa al Carrello
     a = document.createElement('a');
     a.id = 'cartlogo';
-    a.setAttribute('href', './view/cart.php');
+    a.setAttribute('href', 'cart.php');
     nodeli.appendChild(a);
     img = document.createElement('img');
     img.setAttribute('src', '/img/icons/cart.png');
@@ -49,7 +49,7 @@ jQuery(document).ready(function() {
     // Creazione dell'icona relativa alla Wishlist
     a = document.createElement('a');
     a.id = 'wishlogo';
-    a.setAttribute('href', './view/wish.php');
+    a.setAttribute('href', 'wish.php');
     nodeli.appendChild(a);
     img = document.createElement('img');
     img.setAttribute('src', '/img/icons/wish.png');
@@ -61,7 +61,7 @@ jQuery(document).ready(function() {
 
     // Creazione dell'icona relativa agli Ordini
     a = document.createElement('a');
-    a.setAttribute('href', './view/orders.php');
+    a.setAttribute('href', 'orders.php');
     nodeli.appendChild(a);
     img = document.createElement('img');
     img.id = 'Ordini';
@@ -74,7 +74,7 @@ jQuery(document).ready(function() {
 
     // Creazione dell'icona relativa alla sezione Giochi
     a = document.createElement('a');
-    a.setAttribute('href', './view/game.php');
+    a.setAttribute('href', 'game.php');
     nodeli.appendChild(a);
     img = document.createElement('img');
     img.id = 'Gioco';

@@ -4,6 +4,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+
+
 if (!$_POST['username'] || !$_POST['password']) {
     echo json_encode(array('msg' => 'Errore. Compilare entrambi i campi.'), JSON_THROW_ON_ERROR, 512);
 } elseif (!ctype_alpha($_POST['username'])) {
@@ -24,8 +26,11 @@ function checkPassword($username, $password)
 {
     require '../dbconnection.php';
     $stmt = $db->prepare('SELECT firstname FROM user WHERE username = ? AND password = ?');
-    $data = $stmt->execute(array($username, $password));
+    //todo non funziona il login
+//    TODO CONTROLLARE BENE TUTTE LE QUERY
+    $data = $stmt->execute(array('paolo', $password));
     if ($data) {
+//        echo $data;
         return $data;
     }
     return false;
