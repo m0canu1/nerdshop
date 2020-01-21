@@ -2,6 +2,7 @@
 Creazione della navigation-bar.
 */
 
+
 jQuery(document).ready(function() {
     // Creazione della lista delle icone presenti nella navbar
     var nodeul = document.createElement('ul');
@@ -15,7 +16,7 @@ jQuery(document).ready(function() {
     a.setAttribute('href', './view/home.php');
     nodeli.appendChild(a);
     var img = document.createElement('img');
-    img.setAttribute('src', './img/LogoWhite115x40.png');
+    img.setAttribute('src', '/img/LogoWhite115x40.png');
     img.setAttribute('title', 'Home page di TWebShop');
     img.setAttribute('alt', 'banner logo');
     a.prepend(img);
@@ -25,7 +26,7 @@ jQuery(document).ready(function() {
     // Creazione dell'icona relativa al Logout
     img = document.createElement('img');
     img.id = 'logoutlogo';
-    img.setAttribute('src', './img/icons/logout.png');
+    img.setAttribute('src', '/img/icons/logout.png');
     img.setAttribute('title', 'Effettua il log out');
     img.setAttribute('alt', 'logout logo');
     nodeli.prepend(img);
@@ -38,7 +39,7 @@ jQuery(document).ready(function() {
     a.setAttribute('href', './view/cart.php');
     nodeli.appendChild(a);
     img = document.createElement('img');
-    img.setAttribute('src', './img/icons/cart.png');
+    img.setAttribute('src', '/img/icons/cart.png');
     img.setAttribute('title', 'Carrello');
     img.setAttribute('alt', 'cart logo');
     a.prepend(img);
@@ -51,7 +52,7 @@ jQuery(document).ready(function() {
     a.setAttribute('href', './view/wish.php');
     nodeli.appendChild(a);
     img = document.createElement('img');
-    img.setAttribute('src', './img/icons/wish.png');
+    img.setAttribute('src', '/img/icons/wish.png');
     img.setAttribute('title', 'Lista dei desideri');
     img.setAttribute('alt', 'wish logo');
     a.prepend(img);
@@ -64,7 +65,7 @@ jQuery(document).ready(function() {
     nodeli.appendChild(a);
     img = document.createElement('img');
     img.id = 'Ordini';
-    img.setAttribute('src', './img/icons/order.png');
+    img.setAttribute('src', '/img/icons/order.png');
     img.setAttribute('title', 'Ordini');
     img.setAttribute('alt', 'order logo');
     a.prepend(img);
@@ -77,7 +78,7 @@ jQuery(document).ready(function() {
     nodeli.appendChild(a);
     img = document.createElement('img');
     img.id = 'Gioco';
-    img.setAttribute('src', './img/icons/game.png');
+    img.setAttribute('src', '/img/icons/game.png');
     img.setAttribute('title', 'Gioco');
     img.setAttribute('alt', 'game logo');
     a.prepend(img);
