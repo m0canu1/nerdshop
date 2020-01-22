@@ -11,13 +11,14 @@ jQuery(document).ready(function () {
     var user;
     jQuery.ajax({
         type: 'GET',
-        url: '../model/users/getuser.php',
+        url: '../model/getuser.php',
         data: '',
         dataType: 'json',
         success: function (result) {
             user = result.user;
         },
         error: function (error) {
+            console.log(error);
             console.log("Errore: impossibile ottenere informazioni dell'utente.");
         }
     });
@@ -31,9 +32,11 @@ jQuery(document).ready(function () {
         data: '',
         dataType: 'JSON',
         success: function(result){
+
             setWish(result);
         },
         error: function(error) {
+            console.log(error);
             console.log('Errore: impossibile ottenere informazioni della Wishlist.');
         }
     });

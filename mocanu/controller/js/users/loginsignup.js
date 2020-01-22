@@ -49,14 +49,12 @@ jQuery(document).ready(function () {
             data: jQuery('#loginform').serializeArray(),
             dataType: 'json',
             success: function (result) {
-                console.log(result);
+                window.location.href = result.url;
+                console.log(result.msg);
                 //TODO problema qui per i file non trovate da top.html
-                // window.location.href = '/view/home.php';
-                // window.location.href = result.url;
             },
             error: function (error) {
-                console.log(error);
-                console.log('Errore: impossibile effettuare il login.')
+                console.log(error)
             }
         });
 

@@ -8,9 +8,11 @@ require '../dbconnect.php';
 
 function getDiscount($user) {
     $stmt = $db->prepare('SELECT discount FROM user WHERE username = ?');
-    $data = $stmt->execute(array($user));
+    $stmt->execute(array($user));
+
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($data) {
-        var_dump($data);
+//        var_dump($data);
         return $data['discount'];
     }
 }
