@@ -4,7 +4,7 @@
  * Da qui è possibile completare un acquisto o trasferire un prodotto nella Wishlist.
  */
 include 'top.html';
-include '../model/common.php';
+require '../model/common.php';
 ?>
 
 <!-- CSS -->

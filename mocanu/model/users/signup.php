@@ -19,6 +19,7 @@ if (!$_POST['username'] || !$_POST['password'] || !$_POST['email'] || !$_POST['f
 } else if (isset($_POST['username']) && isset($_POST['password'])) {
     $user = $_POST['username'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
     $email = $_POST['email'];
     $fname = $_POST['firstname'];
     $lname = $_POST['lastname'];
@@ -26,8 +27,8 @@ if (!$_POST['username'] || !$_POST['password'] || !$_POST['email'] || !$_POST['f
         /**
          * TODO SCRIVERE IN RELAZIONE:
          * prova ad eseguire la query per l'inserimento dell'utente nel db
-         * se l'email o il nome utente sono già presenti (campi unici nel db
-         * restituirà l'eccezione con codice errore 23000
+         * se l'email o il nome utente sono già presenti (campi unici nel db)
+         * restituirà l'eccezione con codice errore 1062
          */
         try {
             $stmt = $db->prepare('INSERT INTO user (username, password, firstname, lastname, email)  VALUES (?,?,?,?,?)');

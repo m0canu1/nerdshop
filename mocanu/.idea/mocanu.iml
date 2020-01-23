@@ -9,5 +9,8 @@
     <orderEntry type="library" name="jquery-ui" level="application" />
     <orderEntry type="library" name="prototype" level="application" />
     <orderEntry type="library" name="scriptaculous" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="jquery-ui" level="application" />
+    <orderEntry type="library" name="prototype" level="application" />
   </component>
 </module>

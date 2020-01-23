@@ -6,7 +6,7 @@
     $hostname = 'localhost';
     $dbname = 'twebdb';
     $user = 'root';
-    $pass = 'root';
+    $pass = '';
 
 try {
     $db = new PDO ("mysql:host=$hostname;dbname=$dbname", $user, $pass);

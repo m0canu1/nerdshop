@@ -9,12 +9,8 @@ require '../getUserId.php';
 
 $user_id = getUserId($_SESSION['user']);
 $stmt = $db->prepare('SELECT * FROM product JOIN wish w on product.id = w.id_product');
-$result = array();
+$stmt->execute();
+$result = $stmt->fetchAll();
 
-if ($stmt->execute()) {
-    foreach ($stmt->fetchAll() as $row) {
-        $result = $row;
-    }
-}
 $db = null;
 echo json_encode($result, JSON_THROW_ON_ERROR, 512);
