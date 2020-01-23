@@ -5,7 +5,6 @@
 
 require '../common.php';
 require '../dbconnection.php';
-require '../getUserId.php';
 
 $user_id = getUserId($_SESSION['user']);
 $stmt = $db->prepare('SELECT * FROM product JOIN wish w on product.id = w.id_product');

@@ -5,17 +5,17 @@ Creazione della navigation-bar.
 
 jQuery(document).ready(function() {
     // Creazione della lista delle icone presenti nella navbar
-    var nodeul = document.createElement('ul');
+    const nodeul = document.createElement('ul');
     nodeul.className = 'ul-navbar';
     document.getElementsByTagName('BODY')[0].prepend(nodeul);
-    var nodeli = document.createElement('li');
+    let nodeli = document.createElement('li');
     nodeul.appendChild(nodeli);
 
     // Creazione dell'icona relativa all'Homepage
-    var a = document.createElement('a');
+    let a = document.createElement('a');
     a.setAttribute('href', 'home.php');
     nodeli.appendChild(a);
-    var img = document.createElement('img');
+    let img = document.createElement('img');
     img.setAttribute('src', '/img/LogoWhite115x40.png');
     img.setAttribute('title', 'Home page di TWebShop');
     img.setAttribute('alt', 'banner logo');

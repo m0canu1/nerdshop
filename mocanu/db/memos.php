@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * DA PROF
+ */
+$title = $_GET["movietitle"];
+$title = $db->quote($title);
+$rows = $db->query("SELECT year FROM movies WHERE name = $title");
+
+
+
+
 //fetchAll — Returns an array containing all of the result set rows
 //fetch — Fetches the next row from a result set
 
@@ -15,13 +25,15 @@ $db = null;
 echo json_encode($result);
 
 
-$rows = $db->query("SELECT * FROM wish WHERE (id_user = '$id_user' AND
-      id_product = '$id_prod')");
-if($rows->rowCount() > 0)
-    return true;
-else
-    return false;
+$stmt = $db->prepare('SELECT * FROM cart WHERE id_product = ? and id_user = ?');
+$stmt->execute(array($id_prod, $id_user));
+$rows = $stmt->fetchAll();
 
+if ($rows->rowCount() > 0) {
+    return true;
+} else {
+    return false;
+}
 
 try {
     $stmt = $db->prepare('INSERT INTO user (username, password, firstname, lastname, email)  VALUES (?,?,?,?,?)');

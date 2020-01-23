@@ -6,16 +6,15 @@
  */
 
 jQuery(document).ready(function () {
-
     jQuery('#containerhome').fadeIn(800);
-    var user;
+    let user;
 
     /**
      * Recupera le informazioni dell'utente
      */
     jQuery.ajax({
         type: 'GET',
-        url: '../model/users/getuser.php',
+        url: '../model/getuser.php',
         data: '',
         dataType: 'json',
         success: function (result) {
@@ -60,7 +59,7 @@ jQuery(document).ready(function () {
         dataType: 'json',
         success: function (result) {
             //TODO gestire meglio i json?
-            var productList = JSON.parse(JSON.stringify(result));
+            const productList = JSON.parse(JSON.stringify(result));
             //todo da capire
             jQuery('#searchbox').autocomplete({
                 source: result
@@ -71,6 +70,7 @@ jQuery(document).ready(function () {
             });
         },
         error: function (error) {
+            console.log(error)
             console.log('Errore recupero prodotti');
         }
     });
@@ -82,35 +82,34 @@ jQuery(document).ready(function () {
      * @returns {number}
      */
     Object.size = function(obj) {
-        var size = 0, key;
+        let size = 0, key;
         for (key in obj)
             if (obj.hasOwnProperty(key)) size++;
         return size;
     };
 
     function setHome(products) {
-        var size = Object.size(products);
+        const size = Object.size(products);
 
-        //TODO da fare
-        // setTextOfCLass();
+        setTextOfClass();
 
-        var nodeul = document.createElement('ul');
+        const nodeul = document.createElement('ul');
         nodeul.id = 'gridhome';
 
         document.getElementById('containerhome').appendChild(nodeul);
 
-        for (var i = 0; i < size; i++) {
-            var nodeli = document.createElement('li');
+        for (let i = 0; i < size; i++) {
+            const nodeli = document.createElement('li');
 
             nodeul.appendChild(nodeli);
-            var nodediv = document.createElement('div');
+            const nodediv = document.createElement('div');
             nodediv.className = 'product';
 
             nodeli.appendChild(nodediv);
-            var a = document.createElement('a');
+            const a = document.createElement('a');
 
             a.setAttribute('href', 'product.php?prod=' + products[i]['name']);
-            var img = document.createElement('img');
+            const img = document.createElement('img');
             img.setAttribute('src', '../img/smartphone/' + products[i]['name'].replace(/ /g, '') + '.png');
             img.setAttribute('title', products[i]['name']);
             img.className = 'imgphone';
@@ -118,7 +117,7 @@ jQuery(document).ready(function () {
 
             nodediv.appendChild(a);
             //TODO che cosa sono?
-            var nodep = document.createElement('p');
+            let nodep = document.createElement('p');
             nodep.setAttribute('alt', 'user');
             jQuery(nodep).html(user);
             nodep.hide();
@@ -139,16 +138,16 @@ jQuery(document).ready(function () {
 
         }
         //todo da fare
-        // draganddrop();
+        dragandrop();
     }
 
 
     setModal();
 
-    var modal = document.getElementById('myModal');
+    const modal = document.getElementById('myModal');
     //TODO forse inutile
     // var button = document.getElementById('myBtn');
-    var span = document.getElementsByClassName('close')[0];
+    const span = document.getElementsByClassName('close')[0];
 
     /**
      * apertura della finestra
@@ -175,27 +174,100 @@ jQuery(document).ready(function () {
     };
 
     function setModal() {
-        var nodediv = document.createElement('div');
+        const nodediv = document.createElement('div');
         nodediv.className = 'modal-content';
         document.getElementById('myModal').appendChild(nodediv);
 
-        var node = document.createElement('div');
+        const node = document.createElement('div');
         node.className = 'modal-header';
         nodediv.appendChild(node);
 
-        var nodespan = document.createElement('span');
+        const nodespan = document.createElement('span');
         nodespan.className = 'close';
         node.appendChild(nodespan);
 
-        var nodeh = document.createElement('h2');
+        const nodeh = document.createElement('h2');
         nodeh.className = 'hmodal';
         node.appendChild(nodeh);
 
-        var nodep = document.createElement('p');
+        let nodep = document.createElement('p');
         node.appendChild(nodep);
 
         nodep = document.createElement('p');
         nodep.className = 'modelsubtext';
         node.appendChild(nodep);
+    }
+
+    function dragandrop() {
+
+        jQuery('.prdct').draggable({
+            helper:'clone',
+            cursorAt:{
+                left: 50,
+                top: 50,
+            },
+            tolerance: 'touch'
+        });
+
+        jQuery('.bannerscontainer :first').droppable({
+            accept: '.prdct',
+            hoverClass: 'ui-state-higlight',
+            drop: function(event, ui){
+                event.preventDefault(); //TODO trovare spiegazione
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '../model/home/cartViaDrop.php',
+                    data: {
+                        user: ui.draggable.find('.user').text(),
+                        name: ui.draggable.find('.nameprdct').text(),
+                    },
+                    dataType: 'JSON',
+                    success: function(result){
+                        if(result.msg.includes('aggiunto'))
+                            jQuery('.hmodal').text('Prodotto aggiunto');
+                        else jQuery('.hmodal').text('Prodotto già presente');
+                        jQuery('.modeltext').text(result.msg);
+                        modf();
+                    },
+                    error: function(error){
+                        console.log(error.msg);
+                    },
+                });
+            }
+        });
+
+        jQuery('#wishbanner :last').droppable({
+            accept: '.prdct',
+            hoverClass: 'ui-state-higlight',
+            drop: function(event, ui){
+                event.preventDefault();
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '../model/home/wishviadrop.php',
+                    data: {
+                        user: ui.draggable.find('.user').text(),
+                        name: ui.draggable.find('.nameprdct').text(),
+                    },
+                    dataType: 'JSON',
+                    success: function(result){
+                        if(result.msg.includes('aggiunto'))
+                            jQuery('.hmodal').text('Prodotto aggiunto');
+                        else jQuery('.hmodal').text('Prodotto già presente');
+                        jQuery('.modeltext').text(result.msg);
+                        modf();
+                    },
+                    error: function(result){
+                        console.log(result.msg);
+                    },
+                });
+            }
+        });
+    }
+
+
+    function setTextOfClass() {
+        document.getElementsByClassName('close')[0].innerHTML = '&times;';
+        document.getElementsByClassName('modelsubtext')[0].innerHTML =
+            'Il prodotto selezionato si trover&agrave; nella sezione apposita.';
     }
 });
