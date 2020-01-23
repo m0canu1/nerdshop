@@ -6,6 +6,8 @@
 require '../dbconnection.php';
 require '../common.php';
 
+
+//TODO poter ordinare piu di un prodotto?
 if(!$_POST['fname'] || !$_POST['lname'] || !$_POST['addrs'] || !$_POST['city'] || !$_POST['cap']){
     echo json_encode(array('msg'=>"Errore durante l'acquisto, inserire tutti i campi."));
     exit;
@@ -42,8 +44,19 @@ if(strcmp(trim($shipment),"free") == 0) {
 
 $cost = getProductPrice($product) + $shipment - $discount;
 
-$id_prod = $db->quote($id_prod);
-$id_user = $db->quote($id_user);
-$db->query("INSERT INTO wish (id_user, id_product) VALUES ($id_user, $id_prod)");
+$stmt = $db->prepare("INSERT INTO ordine (id, id_user, id_product, cost, name, surname, address, city, cap, data) VALUES 
+                                                                                                   (DEFAULT, ?,?,?,?,?,?,?,?,?)");
+
+$stmt->execute(array($id_user, $id_prod, $cost, $fname, $lname, $addrs, $city, $cap, $date));
+
+updateProdQuantity($id_prod, -1);
+removeUserDiscount($id_user);
+
+//TODO accertarsi del funzionamento
+if (removeFromCart($id_user, $id_prod) != 0) {
+    echo json_encode(array('msg'=>"Il prodotto è stato acquistato!"));
+} else {
+    echo json_encode(array('msg'=>"Errore durante l'acquisto, riprovare."));
+}
 
 //TODO da finire

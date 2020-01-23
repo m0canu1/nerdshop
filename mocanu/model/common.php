@@ -56,20 +56,35 @@ function checkCart($id_user, $id_prod)
 }
 
 /**
- * trova l'id di un prodotto
+ * Trova l'id di un prodotto
  * @param $product
  * @return mixed
+ * TODO ERRORE QUIIIIII
  */
 function getProdId($product)
 {
+    require 'dbconnection.php'; //con questo pare funzionare
+
+    //TODO funziona?
     $product = $db->quote($product);
-    $rows_prod = $db->query("SELECT id FROM product WHERE name = $product");
-
-    foreach($rows_prod as $row) {
-        return $row["id"];
-    }
-
+    $rows = $db->query("SELECT id FROM product WHERE name = $product");
+    $data = $rows->fetch();
+    return $data['id'];
+////    foreach($rows as $row) {
+////        return $row["id"];
+////    }
+//
 }
+
+//function getProdId($product){
+//    require 'dbconnection.php';
+//    $prod = $db->quote($product);
+//    $rows_prod = $db->query("SELECT id FROM product WHERE name = $prod");
+//    if ($rows_prod) {
+//        foreach($rows_prod as $row)
+//            return $row['id'];
+//    }
+//}
 
 
 /**
@@ -125,5 +140,70 @@ function getProductPrice($product){
         }
     } else {
         return false;
+    }
+}
+
+
+function getProdQuantity($product)
+{
+    $product = $db->quote($product);
+    $rows = $db->query("SELECT quantity FROM product WHERE name = $product");
+    if ($rows) {
+        foreach($rows as $row) {
+            return (int) $row['quantity'];
+        }
+    } else {
+        return false;
+    }
+}
+
+
+/**
+ * Diminuisce la quantita' disponibile del prodotto di quella indicata
+ * @param $id_prod
+ * @param $quantity
+ * TODO testare funzionamento
+ */
+function updateProdQuantity($id_prod, $quantity)
+{
+    $quantity = getProdQuantity($id_prod) + $quantity;
+    $quantity = $db->quote($quantity);
+    $id_prod = $db->quote($id_prod);
+    $db->exec("UPDATE product SET quantity = $quantity WHERE id = $id_prod");
+}
+
+/**
+ * Elimina lo sconto di un utente
+ * @param $id_user
+ */
+function removeUserDiscount($id_user)
+{
+    $db->exec("UPDATE user SET discount = 0 WHERE id = $id_user");
+}
+
+/**
+ * Rimuove il prodotto dal carrello dell'utente
+ * @param $id_user
+ * @param $id_prod
+ * @return mixed
+ */
+function removeFromCart($id_user, $id_prod)
+{
+    $id_user = $db->quote($id_user);
+    $id_prod = $db->quote($id_prod);
+    return $db->exec("DELETE FROM cart WHERE id_user = $id_user and id_product = $id_prod");
+}
+
+/**
+ * Restituisce l'username dell'utente dall'id fornito
+ * @param $id_user
+ * @return mixed
+ */
+function getUsername($id_user)
+{
+    $rows = $db->query("SELECT username FROM user WHERE id = $id_user");
+    if ($rows) {
+        foreach($rows as $row)
+            return $row['username'];
     }
 }
