@@ -2,7 +2,6 @@
 
 $root = $_SERVER["DOCUMENT_ROOT"];
 
-require 'dbconnection.php';
 
 //TODO forse superfluo
 if (!isset($_SESSION)) {
@@ -25,6 +24,7 @@ if (!isset($_SESSION['user'])) {
  */
 function checkWish($id_user, $id_prod)
 {
+    require 'dbconnection.php';
     $id_prod = $db->quote($id_prod);
     $id_user = $db->quote($id_user);
     $rows = $db->query("SELECT * FROM wish WHERE id_product = $id_prod and id_user = $id_user");
@@ -44,6 +44,8 @@ function checkWish($id_user, $id_prod)
  */
 function checkCart($id_user, $id_prod)
 {
+    require 'dbconnection.php';
+
     $id_prod = $db->quote($id_prod);
     $id_user = $db->quote($id_user);
     $rows = $db->query("SELECT * FROM cart WHERE id_product = $id_prod and id_user = $id_user");
@@ -94,6 +96,7 @@ function getProdId($product)
  */
 function getUserId($username)
 {
+    require 'dbconnection.php';
     $username = $db->quote($username);
     $rows = $db->query("SELECT id FROM user WHERE username = $username");
 
@@ -110,6 +113,8 @@ function getUserId($username)
  */
 function getDiscount($user)
 {
+    require 'dbconnection.php';
+
     $user = $db->quote($user);
     $rows = $db->query("SELECT discount FROM user WHERE username = $user");
     //TODO verificare rimozione if e ritorno di false dopo foreach
@@ -129,7 +134,9 @@ function getDiscount($user)
  * @param $product
  * @return bool|mixed
  */
-function getProductPrice($product){
+function getProductPrice($product)
+{
+    require 'dbconnection.php';
 
     $product = $db->quote($product);
     $rows = $db->query("SELECT price FROM product WHERE name = $product");
@@ -146,6 +153,8 @@ function getProductPrice($product){
 
 function getProdQuantity($product)
 {
+    require 'dbconnection.php';
+
     $product = $db->quote($product);
     $rows = $db->query("SELECT quantity FROM product WHERE name = $product");
     if ($rows) {
@@ -166,6 +175,8 @@ function getProdQuantity($product)
  */
 function updateProdQuantity($id_prod, $quantity)
 {
+    require 'dbconnection.php';
+
     $quantity = getProdQuantity($id_prod) + $quantity;
     $quantity = $db->quote($quantity);
     $id_prod = $db->quote($id_prod);
@@ -178,6 +189,8 @@ function updateProdQuantity($id_prod, $quantity)
  */
 function removeUserDiscount($id_user)
 {
+    require 'dbconnection.php';
+
     $db->exec("UPDATE user SET discount = 0 WHERE id = $id_user");
 }
 
@@ -189,6 +202,8 @@ function removeUserDiscount($id_user)
  */
 function removeFromCart($id_user, $id_prod)
 {
+    require 'dbconnection.php';
+
     $id_user = $db->quote($id_user);
     $id_prod = $db->quote($id_prod);
     return $db->exec("DELETE FROM cart WHERE id_user = $id_user and id_product = $id_prod");
@@ -201,9 +216,71 @@ function removeFromCart($id_user, $id_prod)
  */
 function getUsername($id_user)
 {
+    require 'dbconnection.php';
+
     $rows = $db->query("SELECT username FROM user WHERE id = $id_user");
     if ($rows) {
         foreach($rows as $row)
             return $row['username'];
+    }
+}
+
+/**
+ * Rimuove il prodotto dalla wishlist di un utente
+ * @param $id_user
+ * @param $id_prod
+ * @return mixed
+ */
+function removeFromWish($id_user, $id_prod)
+{
+    require 'dbconnection.php';
+
+    $id_user = $db->quote($id_user);
+    $id_prod = $db->quote($id_prod);
+    return $db->exec("DELETE FROM wish WHERE id_user = $id_user and id_product = $id_prod");
+}
+
+
+/**
+ * @param $id_user
+ * @param $id_prod
+ * @return false|string messaggio da mostrare a nella webpage
+ */
+function addToCart($id_user, $id_prod)
+{
+    require 'dbconnection.php';
+
+    if (checkCart($id_user, $id_prod)) {
+        $db = null;
+        return json_encode(array('msg' => 'Il prodotto è già presente nel carrello.',));
+    } else {
+        $id_user = $db->quote($id_user);
+        $id_prod = $db->quote($id_prod);
+
+        $db->query("INSERT INTO cart (id_user, id_product) VALUES ($id_user, $id_prod)");
+        $db = null;
+        return json_encode(array('msg'=>'Il prodotto è stato aggiunto al carrello!'));
+    }
+}
+
+/**
+ * @param $id_user
+ * @param $id_prod
+ * @return false|string messaggio da mostrare a nella webpage
+ */
+function addToWish($id_user, $id_prod)
+{
+    require 'dbconnection.php';
+
+    if (checkCart($id_user, $id_prod)) {
+        $db = null;
+        return json_encode(array('msg' => 'Il prodotto è già presente nella Wishlist.',));
+    } else {
+        $id_user = $db->quote($id_user);
+        $id_prod = $db->quote($id_prod);
+
+        $db->query("INSERT INTO wish (id_user, id_product) VALUES ($id_user, $id_prod)");
+        $db = null;
+        return json_encode(array('msg'=>'Il prodotto è stato aggiunto alla Wishlist!'));
     }
 }
