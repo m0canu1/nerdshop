@@ -206,7 +206,15 @@ function removeFromCart($id_user, $id_prod)
 
     $id_user = $db->quote($id_user);
     $id_prod = $db->quote($id_prod);
-    return $db->exec("DELETE FROM cart WHERE id_user = $id_user and id_product = $id_prod");
+    $rows = $db->query("DELETE FROM cart where id_user = $id_user and id_product = $id_prod");
+
+    if ($rows->rowCount() > 0) {
+        $db = null;
+        return json_encode(array('msg'=>"Il prodotto è stato rimosso."));
+    } else {
+        $db = null;
+        return json_encode(array('msg'=>"Il prodotto non è stato rimosso a causa di un errore."));
+    }
 }
 
 /**
@@ -237,7 +245,15 @@ function removeFromWish($id_user, $id_prod)
 
     $id_user = $db->quote($id_user);
     $id_prod = $db->quote($id_prod);
-    return $db->exec("DELETE FROM wish WHERE id_user = $id_user and id_product = $id_prod");
+    $rows = $db->query("DELETE FROM wish where id_user = $id_user and id_product = $id_prod");
+
+    if ($rows->rowCount() > 0) {
+        $db = null;
+        return json_encode(array('msg' => "Il prodotto è stato rimosso."));
+    } else {
+        $db = null;
+        return json_encode(array('msg' => "Il prodotto non è stato rimosso a causa di un errore."));
+    }
 }
 
 
@@ -272,7 +288,7 @@ function addToWish($id_user, $id_prod)
 {
     require 'dbconnection.php';
 
-    if (checkCart($id_user, $id_prod)) {
+    if (checkWish($id_user, $id_prod)) {
         $db = null;
         return json_encode(array('msg' => 'Il prodotto è già presente nella Wishlist.',));
     } else {
