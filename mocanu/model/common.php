@@ -127,8 +127,6 @@ function getDiscount($user)
     }
 }
 
-//$discount = getDiscount($_SESSION["user"]);
-//echo json_encode($discount);
 
 /**
  * @param $product
@@ -142,8 +140,7 @@ function getProductPrice($product)
     $rows = $db->query("SELECT price FROM product WHERE name = $product");
     if ($rows) {
         foreach($rows as $row) {
-            $price = $row['price'];
-            return $price;
+            return $row['price'];
         }
     } else {
         return false;
