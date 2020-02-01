@@ -27,6 +27,7 @@ jQuery(document).ready(function (){
             setCart(result);
         },
         error: function(error) {
+            console.log(error);
             console.log('Errore: impossibile ottenere le informazioni del Carrello.');
         }
     });

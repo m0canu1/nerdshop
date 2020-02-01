@@ -47,7 +47,7 @@ jQuery(document).ready(function () {
      */
     jQuery(document).on('submit', '.removefromwish',function () {
         //todo è giusto this al posto di event
-        this.preventDefault();
+        event.preventDefault();
         var elem = jQuery(this).find('input[name="idprod"]');
         jQuery.ajax({
             type: 'POST',
@@ -69,7 +69,7 @@ jQuery(document).ready(function () {
      * aggiunta di un prodotto al carrello
      */
     jQuery(document).on('submit', '.addtocart', function(){
-        this.preventDefault();
+        event.preventDefault();
         var elem = jQuery(this).find("input[name='idp']");
         jQuery.ajax({
             type: 'POST',
@@ -109,7 +109,7 @@ jQuery(document).ready(function () {
             a.setAttribute('href', 'product.php?prod=' + object[i][1]);
 
             var img = document.createElement('img');
-            img.setAttribute('src', '../img/smartphone' + object[i][1].replace(/ /g, '') + '.png');
+            img.setAttribute('src', '../../img/smartphone/' + object[i][1].replace(/ /g, '') + '.png');
             img.setAttribute('title', object[i][1]);
             img.className = 'imgwish';
 
@@ -209,7 +209,7 @@ jQuery(document).ready(function () {
         var nodeinput = document.createElement('input');
         nodeinput.type = 'hidden';
         nodeinput.name = 'idp';
-        nodeinput.value = obj[i][0];
+        nodeinput.value = object[i][0];
         nodeinput.className = 'id';
         nodeform.appendChild(nodeinput);
 
@@ -251,7 +251,7 @@ jQuery(document).ready(function () {
         var node = document.createElement('input'); // input del form
         node.type = 'hidden';
         node.name = 'idprod';
-        node.value = obj[i][0];
+        node.value = object[i][0];
         node.id = 'id';
         nodeform.appendChild(node);
 
