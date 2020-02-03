@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{listingsutf8}
 \usepackage{color}
+\usepackage[section]{placeins}
 
 \lstdefinestyle{mystyle}{
     backgroundcolor=\color{backcolour},
@@ -183,15 +184,49 @@ In ogni pagina, tranne per la pagina di Login, è presente un footer. Qui sono p
 delle sezioni del sito. Cliccando su una di esse l'utente verrà indirizzato alla pagina selezionata
 
 \subsection{Mockup}
+\FloatBarrier
+\begin{figure}
+    \includegraphics[width=\linewidth]{mocanu/mockup/Index.png}
+    \caption{index.php}
+    \label{fig:index.php}
+\end{figure}
+\begin{figure}
+    \includegraphics[width=\linewidth]{mocanu/mockup/Home.png}
+    \caption{home.php}
+    \label{fig:home.php}
+\end{figure}
+\begin{figure}
+    \includegraphics[width=\linewidth]{mocanu/mockup/Product.png}
+    \caption{product.php}
+    \label{fig:product.php}
+\end{figure}
+\begin{figure}
+    \includegraphics[width=\linewidth]{mocanu/mockup/Carrello.png}
+    \caption{cart.php}
+    \label{fig:cart.php}
+\end{figure}
+\begin{figure}
+    \includegraphics[width=\linewidth]{mocanu/mockup/wishlist.png}
+    \caption{wish.php}
+    \label{fig:wish.php}
+\end{figure}
+\begin{figure}
+    \includegraphics[width=\linewidth]{mocanu/mockup/Buy.png}
+    \caption{buy.php}
+    \label{fig:buy.php}
+\end{figure}
+\begin{figure}
+    \includegraphics[width=\linewidth]{mocanu/mockup/Ordini.png}
+    \caption{orders.php}
+    \label{fig:orders.php}
+\end{figure}
+\begin{figure}
+    \includegraphics[width=\linewidth]{mocanu/mockup/Gioco.png}
+    \caption{game.php}
+    \label{fig:game.php}
+\end{figure}
 
-\subsubsection{\textit{index.php}}
-\subsubsection{\textit{home.php}}
-\subsubsection{\textit{product.php}}
-\subsubsection{\textit{cart.php}}
-\subsubsection{\textit{wish.php}}
-\subsubsection{\textit{buy.php}}
-\subsubsection{\textit{orders.php}}
-\subsubsection{\textit{game.php}}
+
 
 \section{Funzionalità del sito}
 
@@ -289,7 +324,7 @@ Gli unici file .html sono quelli riguardanti l'inizializzazione e terminazione d
 nel sito, ossia top.html e bottom.html.
 
 \subsection{Soluzioni cross-platform}
-Il sito è stato testato su Google Chrome (Versione 66.0.3359.139) e Firefox (versione 60.0)
+Il sito è stato testato su Google Chrome (Versione 79) e Firefox (versione 72.0)
 
 \subsection{Organizzazione file e cartelle di progetto}
 \begin{itemize}
@@ -301,13 +336,13 @@ Il sito è stato testato su Google Chrome (Versione 66.0.3359.139) e Firefox (ve
     quelli .css
 \end{itemize}
 
-\section{Back-end e comunicazione Fron/Back-end}
+\section{Back-end e comunicazione Front/Back-end}
 \subsection{Architettura generale classi/funzioni php}
 Le varie funzioni php sono suddivise in base al loro compito.
 
 \subsubsection*{funzioni generali}
 \begin{itemize}
-    \item \textit{common.php}: verifica che l'utente sia connesso
+    \item \textit{common.php}: verifica che l'utente sia connesso e ha la maggior parte delle funzioni in esso
     \item \textit{dbconnect.php}: connessione al database
     \item funzioni generiche per ottenere informazioni dal db
 \end{itemize}
@@ -351,7 +386,7 @@ Le varie funzioni php sono suddivise in base al loro compito.
 
 \subsubsection*{buy}
 \begin{itemize}
-    \item \textit{new\_order.php}: creazione di un nuovo ordine per un dato utente
+    \item \textit{newOrder.php}: creazione di un nuovo ordine per un dato utente
 \end{itemize}
 
 \subsubsection*{game}
@@ -359,7 +394,7 @@ Le varie funzioni php sono suddivise in base al loro compito.
     \item  \textit{discount.php}: funzione con lo scopo di aggiungere uno sconto a un dato utente
 \end{itemize}
 
-
+\FloatBarrier
 \subsection{Schema del Database}
 \begin{lstlisting}[language=SQL]
     TABLE user
@@ -421,10 +456,12 @@ Le varie funzioni php sono suddivise in base al loro compito.
         data VARCHAR, NOT NULL
 \end{lstlisting}
 
+\includegraphics[width=\linewidth]{diagram.png}
+
 \subsection{Gestione condizioni di errore}
 Le condizioni di errore che possono presentarsi, quando l'utente immette input non corretti, sono
 gestiti tramite Ajax via dati JSON. Sulla pagina del sito verrà mostrato un messaggio che
-spiegherà il motivo dell'errore, in modo che l'utente possa capire la causa del problema
+spiegherà il motivo dell'errore, in modo che l'utente possa capire la causa del problema.
 
 \subsection{Funzioni di callback lato JavaScript/Ajax}
 
@@ -457,8 +494,7 @@ ha successo viene mostrato all'utente l'esito dell'operazione tramite dati JSON
 \subsubsection*{home}
 \begin{itemize}
     \item \textit{home.js}: sono presenti varie chiamate Ajax che hanno lo scopo di ottenere informazioni
-    fondamentali per il popolamento del DOM della pagina. È presente il control
-    Ajax.Autocompleter per la ricerca dei prodotti presenti nel database
+    fondamentali per il popolamento del DOM della pagina. È presente la funzione di autocompletamento per la ricerca dei prodotti.
 \end{itemize}
 
 \subsubsection*{buy}
